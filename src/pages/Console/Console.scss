@@ -152,13 +152,43 @@
       .left-controller {
         border: 2px solid black;
         border-radius: 25px 5px 5px 25px;
+        .botton-low{
+          margin-top: 2vh;
+          height: 2vh;
+        }
+        .left-joystick{
+          margin-top: 1vh;
+          max-width: 7vw;
+          height: 12vh;
+          .center-left-joystick{
+            margin-top: 1vh;
+            height: 10vh;
+            background-color: rgba(255, 255, 255, 0.331);
+          }
+        }
+        .buttons-arrows{
+          p{
+            width: 3.8vw;
+            max-height: 6vh;
+            padding-top: 0vh;
+            padding-bottom: 7vh;
+          }
+        }
+        .botton-cube{
+          border-radius: 5px;
+          height: 20px;
+          margin-bottom: 1vh;
+          .circle-cube{
+            background-color: rgba(240, 248, 255, 0);
+          }
+        }
       }
       .menu-design {
         border: 2px solid black;
         border-radius: 10px;
         .display {
           width: 20vw;
-          height: 60vh;
+          height: 62vh;
           margin: 1vw;
         }
       }
