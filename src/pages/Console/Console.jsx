@@ -27,7 +27,9 @@ export const Console = () => {
 
   //la función del boton on/off
   const start = () => {
-    setOnOff(!onOff);
+    setTimeout(() => {
+      setOnOff(!onOff);
+    }, 300);
   };
 
   return (
@@ -57,12 +59,54 @@ export const Console = () => {
                     </Col>
                   </Row>
                 </Col>
-                <Col className="left-controller" xs={2} md={2}></Col>
+                <Col className="left-controller" xs={2} md={2}>
+                  <Row>
+                    <Col xs={8} md={8}></Col>
+                    <Col xs={2} md={2}>
+                      <Row>
+                        <Col className="botton-low"></Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                  <Row className="d-flex justify-content-center">
+                    <Col className="left-joystick">
+                      <Row>
+                        <Col className="center-left-joystick"></Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                  <Row className="buttons-arrows">
+                    <Col>
+                      <Row>
+                        <Col className="d-flex justify-content-center"><p>1</p></Col>
+                      </Row>
+                      <Row>
+                        <Col className="d-flex justify-content-center"><p>2</p></Col>
+                        <Col className="d-flex justify-content-center"><p>3</p></Col>
+                      </Row>
+                      <Row>
+                        <Col className="d-flex justify-content-center"><p>4</p></Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xs={8} md={8}></Col>
+                    <Col xs={2} md={2}>
+                      <Row>
+                        <Col className="botton-cube">
+                          <Row className="d-flex justify-content-center">
+                            <Col className="circle-cube"></Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                </Col>
                 <Col className=" menu-design" xs={8} md={8}>
                   <Row>
                     {onOff ? (
-                      <Col className="display">
-                        <h1>Menu</h1>
+                      <Col className="d-flex justify-content-center align-items-center display">
+                        <h1 className="logo-nintendo">Nintendoº</h1>
                       </Col>
                     ) : (
                       <Col className="display"></Col>
