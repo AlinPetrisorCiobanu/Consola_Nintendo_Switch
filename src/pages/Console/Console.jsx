@@ -24,7 +24,7 @@ export const Console = () => {
   }, []);
 
   return (
-    <Container fluid className="console-main-design">
+    <div className="console-main-design">
       {mobile ? (
         <>
           <div className="rotate-message">
@@ -57,6 +57,6 @@ export const Console = () => {
           </Row>
         </Col>
       )}
-    </Container>
+    </div>
   );
 };
