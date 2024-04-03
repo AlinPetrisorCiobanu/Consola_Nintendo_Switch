@@ -35,3 +35,25 @@
     }
   }
 }
+@media (max-width: 930px) {
+    .console-main-design {
+
+        /* ---- DISEÑO DE LA CONSOLA EN DISPOSITIVOS MOVILES -----*/
+        .console-design {
+          margin-top: 30vh;
+          width: 100vw;
+          .left-controller {
+            border: 2px solid black;
+            border-radius: 25px 5px 5px 25px;
+          }
+          .menu-design {
+            border: 2px solid black;
+            border-radius: 10px;
+          }
+          .right-controller {
+            border: 2px solid black;
+            border-radius: 5px 25px 25px 5px;
+          }
+        }
+      }
+}
