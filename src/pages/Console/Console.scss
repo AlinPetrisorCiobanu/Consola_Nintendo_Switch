@@ -6,6 +6,17 @@
   overflow: scroll;
 
   /* ---- DISEÑO DE LA CONSOLA  -----*/
+  .top-bar{
+    .button-start{
+      width: 5vw;
+      height: 1.8vh;
+      border: 2px solid black;
+      border-bottom: 0px;
+      border-radius: 15px 15px 0px 0px;
+      background-color: rgb(95, 93, 93);
+      color: antiquewhite;
+    }
+  }
   .console-design {
     margin-top: 20vh;
     height: 32vh;
@@ -23,6 +34,8 @@
       .display {
         height: 30vh;
         margin: 1vh;
+        margin-left: 1.5vh;
+        margin-right: 1.5vh;
         background-color: black;
         color: aliceblue;
         text-align: center;
@@ -35,7 +48,7 @@
     }
   }
 }
-@media (max-width: 930px) {
+@media (max-width: 600px) {
   .console-main-design {
     .rotate-message {
       width: 100vw;
@@ -46,6 +59,7 @@
       vertical-align: middle;
       background-color: black;
       color: aliceblue;
+      text-align: center;
       @keyframes rotate {
         from {
           transform: rotate(0deg);
@@ -61,6 +75,12 @@
       }
     }
     /* ---- DISEÑO DE LA CONSOLA EN DISPOSITIVOS MOVILES -----*/
+    .top-bar{
+      .button-start{
+        width: 7vw;
+        height: 2vh;
+      }
+    }
     .console-design {
       margin-top: 15vh;
       height: 60vh;
@@ -73,6 +93,7 @@
         border: 2px solid black;
         border-radius: 10px;
         .display {
+          width: 20vw;
           height: 60vh;
           margin: 1vw;
         }
