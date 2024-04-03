@@ -1,4 +1,5 @@
 import { Body } from "./pages/Body/Body";
+import "./styles.scss";
 
 function App() {
 

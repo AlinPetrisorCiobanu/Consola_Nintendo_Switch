@@ -8,9 +8,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <div className="app-container">
-        <div className="background-dark">
-          <App />
-        </div>
+        <App />
       </div>
     </BrowserRouter>
   </React.StrictMode>

@@ -1,9 +1,9 @@
-import { Consola } from "../Consola/Consola"
+import { Console } from "../Console/Console"
 
 export const Home = () => {
     return(
         <>
-            <Consola />
+            <Console />
         </>
     )
 }

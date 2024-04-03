@@ -1,0 +1,37 @@
+.console-main-design {
+  color: black;
+  background-color: antiquewhite;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+
+  /* ---- DISEÑO DE LA CONSOLA  -----*/
+  .console-design {
+    margin-top: 20vh;
+    height: 32vh;
+    width: 96vw;
+    .left-controller {
+      border: 3px solid black;
+      border-radius: 40px 10px 10px 40px;
+      background-color: aqua;
+    }
+    .menu-design {
+      border: 3px solid black;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.591);
+
+      .display {
+        height: 30vh;
+        margin: 1vh;
+        background-color: black;
+        color: aliceblue;
+        text-align: center;
+      }
+    }
+    .right-controller {
+      border: 3px solid black;
+      border-radius: 10px 40px 40px 10px;
+      background-color: rgb(0, 255, 30);
+    }
+  }
+}

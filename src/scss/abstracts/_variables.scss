@@ -1,0 +1,16 @@
+
+:root{
+    /**/
+
+    /*background*/
+    --background-color:rgba(171, 169, 169, 0.661);
+
+    /**/
+    width: 100vw;
+    height: 100vh;
+    overflow: scroll;
+    /**/
+    
+}
+
+@import '../../../node_modules/bootstrap/scss/bootstrap';
