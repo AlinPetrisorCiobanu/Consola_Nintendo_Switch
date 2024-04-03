@@ -40,8 +40,8 @@
 
         /* ---- DISEÑO DE LA CONSOLA EN DISPOSITIVOS MOVILES -----*/
         .console-design {
-          margin-top: 30vh;
-          height: 25vh;
+          margin-top: 15vh;
+          height: 60vh;
           width: 100vw;
           .left-controller {
             border: 2px solid black;
@@ -51,8 +51,8 @@
             border: 2px solid black;
             border-radius: 10px;
             .display {
-              height: 25vh;
-              margin: 1vh;
+              height: 60vh;
+              margin: 1vw;
             }
           }
           .right-controller {
