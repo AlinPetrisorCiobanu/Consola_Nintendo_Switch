@@ -8,15 +8,18 @@ export const Console = () => {
   const [mobile, setMobile] = useState(false);
 
   useEffect(() => {
-    const handleMobile = () => {
+    const handleOrientationChange = () => {
       setMobile(window.matchMedia("(orientation: portrait)").matches);
     };
-    handleMobile();
-    window.addEventListener("orientationchange", handleMobile);
+
+    handleOrientationChange();
+
+    window.addEventListener("resize", handleOrientationChange);
+
     return () => {
-      window.removeEventListener("orientationchange", handleMobile);
+      window.removeEventListener("resize", handleOrientationChange);
     };
-  });
+  }, []);
 
   return (
     <Container fluid className="console-main-design">
