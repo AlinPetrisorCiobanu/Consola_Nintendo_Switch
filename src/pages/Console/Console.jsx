@@ -8,7 +8,9 @@ import "./Console.scss";
 
 export const Console = () => {
   const [mobile, setMobile] = useState(false);
+  const [onOff, setOnOff] = useState(false);
 
+  // Control de orientación de la pantalla .
   useEffect(() => {
     const handleOrientationChange = () => {
       setMobile(window.matchMedia("(orientation: portrait)").matches);
@@ -22,6 +24,11 @@ export const Console = () => {
       window.removeEventListener("resize", handleOrientationChange);
     };
   }, []);
+
+  //la función del boton on/off
+  const start = () => {
+    setOnOff(!onOff);
+  };
 
   return (
     <div className="console-main-design">
@@ -40,15 +47,26 @@ export const Console = () => {
                 <Col xs={12} md={12} className="top-bar">
                   <Row>
                     <Col xs={3} md={3}></Col>
-                    <Col xs={1} md={1} className="d-flex justify-content-center button-start">on/off</Col>
+                    <Col
+                      xs={1}
+                      md={1}
+                      onClick={() => start()}
+                      className="d-flex justify-content-center button-start"
+                    >
+                      <p>on/off</p>
+                    </Col>
                   </Row>
                 </Col>
                 <Col className="left-controller" xs={2} md={2}></Col>
                 <Col className=" menu-design" xs={8} md={8}>
                   <Row>
-                    <Col className="display">
-                      <h1>Menu</h1>
-                    </Col>
+                    {onOff ? (
+                      <Col className="display">
+                        <h1>Menu</h1>
+                      </Col>
+                    ) : (
+                      <Col className="display"></Col>
+                    )}
                   </Row>
                 </Col>
                 <Col className="right-controller" xs={2} md={2}></Col>
