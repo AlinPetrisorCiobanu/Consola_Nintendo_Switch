@@ -36,29 +36,51 @@
   }
 }
 @media (max-width: 930px) {
-    .console-main-design {
-
-        /* ---- DISEÑO DE LA CONSOLA EN DISPOSITIVOS MOVILES -----*/
-        .console-design {
-          margin-top: 15vh;
-          height: 60vh;
-          width: 100vw;
-          .left-controller {
-            border: 2px solid black;
-            border-radius: 25px 5px 5px 25px;
-          }
-          .menu-design {
-            border: 2px solid black;
-            border-radius: 10px;
-            .display {
-              height: 60vh;
-              margin: 1vw;
-            }
-          }
-          .right-controller {
-            border: 2px solid black;
-            border-radius: 5px 25px 25px 5px;
-          }
+  .console-main-design {
+    .rotate-message {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      vertical-align: middle;
+      background-color: black;
+      color: aliceblue;
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
         }
       }
+      .rotate-arrows {
+        margin-top: 5vh;
+        font-size: 30vw;
+        animation: rotate 3s linear infinite;
+      }
+    }
+    /* ---- DISEÑO DE LA CONSOLA EN DISPOSITIVOS MOVILES -----*/
+    .console-design {
+      margin-top: 15vh;
+      height: 60vh;
+      width: 100vw;
+      .left-controller {
+        border: 2px solid black;
+        border-radius: 25px 5px 5px 25px;
+      }
+      .menu-design {
+        border: 2px solid black;
+        border-radius: 10px;
+        .display {
+          height: 60vh;
+          margin: 1vw;
+        }
+      }
+      .right-controller {
+        border: 2px solid black;
+        border-radius: 5px 25px 25px 5px;
+      }
+    }
+  }
 }

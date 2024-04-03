@@ -1,8 +1,10 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import "./Console.scss";
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowsRotate } from '@fortawesome/free-solid-svg-icons';
+import "./Console.scss";
 
 export const Console = () => {
   const [mobile, setMobile] = useState(false);
@@ -27,10 +29,7 @@ export const Console = () => {
         <>
           <div className="rotate-message">
             <h1>Por favor, gira tu dispositivo</h1>
-            <p>
-              Para una mejor experiencia, gira tu teléfono en posición
-              horizontal.
-            </p>
+            <FontAwesomeIcon className="rotate-arrows" icon={faArrowsRotate} />
           </div>
         </>
       ) : (
