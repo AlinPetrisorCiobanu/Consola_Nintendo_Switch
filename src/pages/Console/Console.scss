@@ -6,10 +6,10 @@
   overflow: scroll;
 
   /* ---- DISEÑO DE LA CONSOLA  -----*/
-  .top-bar{
-    .button-start{
-      width: 5vw;
-      height: 1.8vh;
+  .top-bar {
+    .button-start {
+      width: 65px;
+      height: 25px;
       border: 2px solid black;
       border-bottom: 0px;
       border-radius: 15px 15px 0px 0px;
@@ -19,61 +19,69 @@
   }
   .console-design {
     margin-top: 20vh;
-    height: 32vh;
-    width: 96vw;
+    height: 436px;
+    width: 1350px;
 
     //MANDO IZQUIERDO
     .left-controller {
       border: 3px solid black;
       border-radius: 40px 10px 10px 40px;
       background-color: aqua;
-      
-      .botton-low{
+
+      .botton-low {
         background-color: rgb(0, 0, 0);
-        width: 3vw;
-        height: 1vh;
-        margin-top: 2vh;
+        width: 50px;
+        height: 15px;
+        margin-top: 20px;
       }
-      .botton-low:hover{
+      .botton-low:hover {
         cursor: pointer;
       }
-      .left-joystick{
-        margin-top: 3vh;
-        max-width: 5vw;
-        height: 5vh;
+      .left-joystick {
+        margin-top: 25px;
+        max-width: 80px;
+        height: 80px;
         border-radius: 100%;
         background-color: black;
 
-        .center-left-joystick{
-          margin-top: 0.5vh;
-          max-width: 80%;
-          margin-left: 10%;
-          height: 4vh;
+        .center-left-joystick {
+          margin-top: 5px;
+          margin-left: 5px;
+          max-width: 70px;
+          height: 70px;
           background-color: rgba(119, 136, 153, 0.331);
           border-radius: 100%;
         }
       }
-      .buttons-arrows{
-        margin-top: 3vh;
-        p{
-          color: aliceblue;
-          text-align: center;
+      .buttons-arrows {
+        margin-top: 25px;
+        .arrows {
+          width: 30px;
+          height: 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          vertical-align: middle;
           background-color: black;
-          padding: 0.3vw;
-          width: 2.5vw;
           border-radius: 100%;
+          margin: 8px;
+          p {
+            color: aliceblue;
+            padding-top: 15px;
+          }
         }
       }
-      .botton-cube{
+      .botton-cube {
+        margin-top: 25px;
         background-color: rgb(0, 0, 0);
-        width: 30px;
+        width: 40px;
         height: 30px;
         border-radius: 10px;
-        .circle-cube{
-          margin-top: 0.5vh;
-          max-width: 17px;
-          max-height: 20px;
+        .circle-cube {
+          margin-top: 5px;
+          width: 20px;
           height: 20px;
+          margin-left: -2px;
           background-color: rgba(119, 136, 153, 0.463);
           border-radius: 100%;
         }
@@ -86,20 +94,20 @@
       background-color: rgba(0, 0, 0, 0.591);
 
       .display {
-        height: 30vh;
-        margin: 1vh;
-        margin-left: 1.5vh;
-        margin-right: 1.5vh;
+        height: 400px;
+        margin: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
         background-color: black;
         color: aliceblue;
         text-align: center;
 
-        .logo-nintendo{
-          padding: 0.3vw;
-          padding-left: 1vw;
-          padding-right: 1vw;
+        .logo-nintendo {
+          padding: 3px;
+          padding-left: 10px;
+          padding-right: 10px;
           border: 2px solid aliceblue;
-          border-radius: 20vw;
+          border-radius: 50px;
         }
       }
     }
@@ -112,6 +120,7 @@
 }
 @media (max-width: 800px) {
   .console-main-design {
+    margin-top: 0vh;
     .rotate-message {
       width: 100vw;
       height: 100vh;
@@ -138,48 +147,65 @@
       }
     }
     /* ---- DISEÑO DE LA CONSOLA EN DISPOSITIVOS MOVILES -----*/
-    .top-bar{
-      .button-start{
-        color:rgba(95, 93, 93, 0) ;
-        width: 7vw;
-        height: 2vh;
+    .top-bar {
+      margin-top: 10vh;
+      .button-start {
+        color: rgba(95, 93, 93, 0);
+        width: 50px;
+        height: 12px;
       }
     }
     .console-design {
-      margin-top: 15vh;
-      height: 60vh;
-      width: 100vw;
+      margin-top: 0vh;
+      height: 260px;
+      width: 590px;
       .left-controller {
         border: 2px solid black;
         border-radius: 25px 5px 5px 25px;
-        .botton-low{
-          margin-top: 2vh;
-          height: 2vh;
+        .botton-low {
+          margin-top: 20px;
+          width: 15px;
+          height: 8px;
+          margin-right: 10px;
         }
-        .left-joystick{
-          margin-top: 1vh;
-          max-width: 7vw;
-          height: 12vh;
-          .center-left-joystick{
-            margin-top: 1vh;
-            height: 10vh;
+        .left-joystick {
+          margin-top: 15px;
+          max-width: 40px;
+          height: 40px;
+          .center-left-joystick {
+            width: 30px;
+            height: 30px;
+            padding: 5px;
+            margin: 5px;
             background-color: rgba(255, 255, 255, 0.331);
           }
         }
-        .buttons-arrows{
-          p{
-            width: 3.8vw;
-            max-height: 6vh;
-            padding-top: 0vh;
-            padding-bottom: 7vh;
+        .buttons-arrows {
+          margin-top: 18px;
+          .arrows {
+            width: 18px;
+            height: 18px;
+            margin: 2px;
+            padding: 0px;
+            p {
+              font-size: 0.8rem;
+              padding-top: 15px;
+            }
           }
         }
-        .botton-cube{
+        .botton-cube {
+          margin-right: 8px;
           border-radius: 5px;
           height: 20px;
-          margin-bottom: 1vh;
-          .circle-cube{
-            background-color: rgba(240, 248, 255, 0);
+          max-width: 14px;
+          .circle-cube {
+            background-color: rgba(240, 248, 255, 0.57);
+            width: 12px;
+            height: 12px;
+            margin: 1px;
+            margin-top: 4px;
+            margin-left: -6px;
+            padding: 0;
           }
         }
       }
@@ -187,8 +213,7 @@
         border: 2px solid black;
         border-radius: 10px;
         .display {
-          width: 20vw;
-          height: 62vh;
+          height: 240px;
           margin: 1vw;
         }
       }

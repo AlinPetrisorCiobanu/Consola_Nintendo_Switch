@@ -60,13 +60,9 @@ export const Console = () => {
                   </Row>
                 </Col>
                 <Col className="left-controller" xs={2} md={2}>
-                  <Row>
-                    <Col xs={8} md={8}></Col>
-                    <Col xs={2} md={2}>
-                      <Row>
-                        <Col className="botton-low"></Col>
-                      </Row>
-                    </Col>
+                  <Row className="d-flex justify-content-end">
+                    <Col xs={2} className="botton-low"></Col>
+                    <Col xs={0} md={1}></Col>
                   </Row>
                   <Row className="d-flex justify-content-center">
                     <Col className="left-joystick">
@@ -78,28 +74,35 @@ export const Console = () => {
                   <Row className="buttons-arrows">
                     <Col>
                       <Row>
-                        <Col className="d-flex justify-content-center"><p>1</p></Col>
-                      </Row>
-                      <Row>
-                        <Col className="d-flex justify-content-center"><p>2</p></Col>
-                        <Col className="d-flex justify-content-center"><p>3</p></Col>
-                      </Row>
-                      <Row>
-                        <Col className="d-flex justify-content-center"><p>4</p></Col>
-                      </Row>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col xs={8} md={8}></Col>
-                    <Col xs={2} md={2}>
-                      <Row>
-                        <Col className="botton-cube">
-                          <Row className="d-flex justify-content-center">
-                            <Col className="circle-cube"></Col>
-                          </Row>
+                        <Col xs={12} md={12} className="d-flex justify-content-center">
+                          <div className="arrows arrow-up">
+                          <p>1</p>
+                          </div>
+                        </Col>
+                        <Col xs={6} md={6} className="d-flex justify-content-center">
+                          <div className="arrows arrow-left">
+                          <p>2</p>
+                          </div>
+                        </Col>
+                        <Col xs={6} md={6} className="d-flex justify-content-center">
+                          <div className="arrows arrow-right">
+                          <p>3</p>
+                          </div>
+                        </Col>
+                        <Col xs={12} md={12} className="d-flex justify-content-center">
+                          <div className="arrows arrow-down">
+                          <p>4</p>
+                          </div>
                         </Col>
                       </Row>
                     </Col>
+                  </Row>
+                  <Row className="d-flex justify-content-end">
+                    <Col xs={1} md={1} className="botton-cube">
+                      <div className="circle-cube">
+                      </div>
+                    </Col>
+                    <Col xs={0} md={1}></Col>
                   </Row>
                 </Col>
                 <Col className=" menu-design" xs={8} md={8}>
