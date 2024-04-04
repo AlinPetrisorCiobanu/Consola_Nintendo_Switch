@@ -117,7 +117,6 @@
       background-color: rgb(0, 255, 30);
 
       .botton-plus {
-        
         .botton-plus-bar-horizontal {
           background-color: rgb(2, 2, 2);
           width: 40px;
@@ -128,16 +127,16 @@
           background-color: rgb(0, 0, 0);
           height: 40px;
           padding: 0px;
-          width: 12px ;
+          width: 12px;
           margin-top: 10px;
           margin-left: -26px;
-      }
-      .botton-plus-hover:hover{
-        cursor: pointer;
-      }
+        }
+        .botton-plus-hover:hover {
+          cursor: pointer;
+        }
       }
 
-      .buttons-ABXY{
+      .buttons-ABXY {
         margin-top: 25px;
         .abxy {
           width: 30px;
@@ -186,7 +185,7 @@
           height: 30px;
           background-color: rgba(119, 136, 153, 0.331);
           border-radius: 100%;
-          .home{
+          .home {
             margin-left: -6px;
             margin-top: 5px;
             color: aliceblue;
@@ -299,6 +298,68 @@
       .right-controller {
         border: 2px solid black;
         border-radius: 5px 25px 25px 5px;
+
+        .botton-plus {
+          .botton-plus-bar-horizontal {
+            width: 15px;
+            height: 8px;
+            margin-top: 20px;
+            margin-left: 10px;
+          }
+          .botton-plus-bar-vertical {
+            height: 20px;
+            width: 8px;
+            margin-top: 14px;
+            margin-left: -16px;
+          }
+        }
+
+        .buttons-ABXY {
+          margin-top: 15px;
+          .abxy {
+            width: 18px;
+            height: 18px;
+            margin: 2px;
+            padding: 0px;
+            p {
+              font-size: 0.8rem;
+              padding-top: 15px;
+            }
+          }
+        }
+
+        .right-joystick {
+          margin-top: 15px;
+          max-width: 40px;
+          height: 40px;
+
+          .center-right-joystick {
+            width: 30px;
+            height: 30px;
+            padding: 5px;
+            margin: 5px;
+            background-color: rgba(255, 255, 255, 0.331);
+          }
+        }
+        .right-button-home {
+          margin-top: 15px;
+          max-width: 23px;
+          height: 23px;
+          margin-left: 10px;
+          .right-home {
+            margin-top: 5px;
+            margin-left: 5px;
+            max-width: 15px;
+            height: 15px;
+            padding: 0;
+            .home {
+              margin-left: -1px;
+              font-size: 0.9rem;
+              position: relative;
+              top: -7px;
+            }
+          }
+        }
       }
     }
   }
