@@ -3,7 +3,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowsRotate , faHouse } from "@fortawesome/free-solid-svg-icons";
+import { faArrowsRotate , faCaretUp , faCaretDown , faCaretLeft , faCaretRight ,  faHouse } from "@fortawesome/free-solid-svg-icons";
 import "./Console.scss";
 
 export const Console = () => {
@@ -25,12 +25,14 @@ export const Console = () => {
     };
   }, []);
 
-  //la función del boton on/off
-  const start = () => {
-    setTimeout(() => {
-      setOnOff(!onOff);
-    }, 300);
-  };
+// la función del botón on/off
+const start = () => {
+  setTimeout(() => {
+    setOnOff(!onOff);
+    const color = onOff ? '' : 'aliceblue';
+    document.querySelectorAll(".power-on").forEach(element => element.style.color = color);
+  }, 300);
+};
 
   return (
     <div className="console-main-design">
@@ -80,7 +82,9 @@ export const Console = () => {
                           className="d-flex justify-content-center"
                         >
                           <div className="arrows arrow-up">
-                            <p>1</p>
+                            <p>
+                            <FontAwesomeIcon icon={faCaretUp} className="power-on"/>
+                            </p>
                           </div>
                         </Col>
                         <Col
@@ -89,7 +93,9 @@ export const Console = () => {
                           className="d-flex justify-content-center"
                         >
                           <div className="arrows arrow-left">
-                            <p>2</p>
+                            <p>
+                            <FontAwesomeIcon icon={faCaretLeft} className="power-on"/>
+                            </p>
                           </div>
                         </Col>
                         <Col
@@ -98,7 +104,9 @@ export const Console = () => {
                           className="d-flex justify-content-center"
                         >
                           <div className="arrows arrow-right">
-                            <p>3</p>
+                            <p>
+                            <FontAwesomeIcon icon={faCaretRight} className="power-on"/>
+                            </p>
                           </div>
                         </Col>
                         <Col
@@ -107,7 +115,9 @@ export const Console = () => {
                           className="d-flex justify-content-center"
                         >
                           <div className="arrows arrow-down">
-                            <p>4</p>
+                            <p>
+                            <FontAwesomeIcon icon={faCaretDown} className="power-on"/>
+                            </p>
                           </div>
                         </Col>
                       </Row>
@@ -147,7 +157,7 @@ export const Console = () => {
                           className="d-flex justify-content-center"
                         >
                           <div className="abxy button-x">
-                            <p>X</p>
+                            <p className="power-on">X</p>
                           </div>
                         </Col>
                         <Col
@@ -156,7 +166,7 @@ export const Console = () => {
                           className="d-flex justify-content-center"
                         >
                           <div className="abxy button-y">
-                            <p>Y</p>
+                            <p className="power-on">Y</p>
                           </div>
                         </Col>
                         <Col
@@ -165,7 +175,7 @@ export const Console = () => {
                           className="d-flex justify-content-center"
                         >
                           <div className="abxy button-a">
-                            <p>A</p>
+                            <p className="power-on">A</p>
                           </div>
                         </Col>
                         <Col
@@ -174,7 +184,7 @@ export const Console = () => {
                           className="d-flex justify-content-center"
                         >
                           <div className="abxy button-b">
-                            <p>B</p>
+                            <p className="power-on">B</p>
                           </div>
                         </Col>
                       </Row>
@@ -191,7 +201,7 @@ export const Console = () => {
                     <Col className="right-button-home">
                       <Row>
                         <Col className="right-home">
-                          <FontAwesomeIcon className="home" icon={faHouse} />
+                          <FontAwesomeIcon className="home power-on" icon={faHouse} />
                         </Col>
                       </Row>
                     </Col>
