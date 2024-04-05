@@ -87,7 +87,7 @@ export const Console = () => {
       });
   };
 
-  const handleKeyDown = (event) => {
+  const handleKey = (event) => {
     switch (event.key) {
       case "ArrowUp":
         moveUp();
@@ -101,12 +101,15 @@ export const Console = () => {
       case "ArrowRight":
         console.log("right");
         break;
+      case "Enter":
+        submit();
+        break;
       default:
         break;
     }
   };
 
-  window.addEventListener("keydown", handleKeyDown);
+  window.addEventListener("keydown", handleKey);
 
   const moveUp = () => {
     if (
@@ -157,6 +160,12 @@ export const Console = () => {
       });
     }
   };
+
+  const home = () => {
+    setMenu(true)
+    
+    setSubMenus(subMenus.map(() => false))
+  }
 
   return (
     <div className="console-main-design">
@@ -286,6 +295,7 @@ export const Console = () => {
                               {menu ? (
                                 <Row className="d-flex justify-content-center">
                                   <Col
+                                    onClick={() => submit(1)}
                                     id="option_1"
                                     xs={11}
                                     md={10}
@@ -296,6 +306,7 @@ export const Console = () => {
                                     </h1>
                                   </Col>
                                   <Col
+                                    onClick={() => submit(2)}
                                     id="option_2"
                                     xs={11}
                                     md={10}
@@ -306,6 +317,7 @@ export const Console = () => {
                                     </h1>
                                   </Col>
                                   <Col
+                                    onClick={() => submit(3)}
                                     id="option_3"
                                     xs={11}
                                     md={10}
@@ -316,6 +328,7 @@ export const Console = () => {
                                     </h1>
                                   </Col>
                                   <Col
+                                    onClick={() => submit(4)}
                                     id="option_4"
                                     xs={11}
                                     md={10}
@@ -326,6 +339,7 @@ export const Console = () => {
                                     </h1>
                                   </Col>
                                   <Col
+                                    onClick={() => submit(5)}
                                     id="option_5"
                                     xs={11}
                                     md={10}
@@ -336,6 +350,7 @@ export const Console = () => {
                                     </h1>
                                   </Col>
                                   <Col
+                                    onClick={() => submit(6)}
                                     id="option_6"
                                     xs={11}
                                     md={10}
@@ -346,6 +361,7 @@ export const Console = () => {
                                     </h1>
                                   </Col>
                                   <Col
+                                    onClick={() => submit(7)}
                                     id="option_7"
                                     xs={11}
                                     md={10}
@@ -356,6 +372,7 @@ export const Console = () => {
                                     </h1>
                                   </Col>
                                   <Col
+                                    onClick={() => submit(8)}
                                     id="option_8"
                                     xs={11}
                                     md={10}
@@ -366,6 +383,7 @@ export const Console = () => {
                                     </h1>
                                   </Col>
                                   <Col
+                                    onClick={() => submit(9)}
                                     id="option_9"
                                     xs={11}
                                     md={10}
@@ -376,6 +394,7 @@ export const Console = () => {
                                     </h1>
                                   </Col>
                                   <Col
+                                    onClick={() => submit(10)}
                                     id="option_10"
                                     xs={11}
                                     md={10}
@@ -543,7 +562,7 @@ export const Console = () => {
                     </Col>
                   </Row>
                   <Row className="d-flex justify-content-start">
-                    <Col className="right-button-home">
+                    <Col onClick={()=>home()} className="right-button-home">
                       <Row>
                         <Col className="right-home">
                           <FontAwesomeIcon
