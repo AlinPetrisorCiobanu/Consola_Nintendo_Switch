@@ -196,9 +196,9 @@ export const Console = () => {
                                   <Col
                                     xs={11}
                                     md={10}
-                                    className="cell-menu mt-4"
+                                    className="cell-menu mt-4 selected"
                                   >
-                                    <h1 className="text-start menu-options">
+                                    <h1 className="text-start menu-options ">
                                       Option 1
                                     </h1>
                                   </Col>
