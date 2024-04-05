@@ -29,6 +29,20 @@ export const Console = () => {
   const [menu9, setMenu9] = useState(false);
   const [menu10, setMenu10] = useState(false);
 
+  class CounterSelectMain {
+    valor = 1;
+    constructor() {
+      this.valor = 1;
+    }
+    suma() {
+      this.valor++;
+    }
+    resta() {
+      this.valor--;
+    }
+  }
+  const counterSelection = new CounterSelectMain();
+
   // Control de orientación de la pantalla .
   useEffect(() => {
     const handleOrientationChange = () => {
@@ -55,7 +69,7 @@ export const Console = () => {
         .forEach((element) => (element.style.color = color));
       setTimeout(() => {
         setSwitchedOn(!switchedOn);
-        setMenu(!menu)
+        setMenu(!menu);
         document.querySelector(".display").style.backgroundColor =
           color_display;
       }, 1500);
@@ -63,19 +77,47 @@ export const Console = () => {
   };
 
   const decreaseFontSize = () => {
-    switchedOn && document.querySelectorAll(".menu-options").forEach(element => {
-      let current_size = parseFloat(window.getComputedStyle(element, null).getPropertyValue('font-size'));
-      current_size > 8 && (element.style.fontSize = (current_size - 1) + 'px');
-    });
-  }
+    switchedOn &&
+      document.querySelectorAll(".menu-options").forEach((element) => {
+        let current_size = parseFloat(
+          window.getComputedStyle(element, null).getPropertyValue("font-size")
+        );
+        current_size > 8 && (element.style.fontSize = current_size - 1 + "px");
+      });
+  };
 
   const increaseFontSize = () => {
-    switchedOn && document.querySelectorAll(".menu-options").forEach(element => {
-      let currentSize = parseFloat(window.getComputedStyle(element, null).getPropertyValue('font-size'));
-      element.style.fontSize = (currentSize + 1) + 'px';
-    });
-  }
+    switchedOn &&
+      document.querySelectorAll(".menu-options").forEach((element) => {
+        let currentSize = parseFloat(
+          window.getComputedStyle(element, null).getPropertyValue("font-size")
+        );
+        element.style.fontSize = currentSize + 1 + "px";
+      });
+  };
 
+  const moveUp = () => {
+    if (switchedOn && counterSelection.valor > 1 && counterSelection.valor <= 10) {
+        counterSelection.resta();
+        modificado("up", counterSelection.valor);
+    }
+};
+
+const moveDown = () => {
+    if (switchedOn && counterSelection.valor >= 1 && counterSelection.valor < 10) {
+        counterSelection.suma();
+        modificado("down", counterSelection.valor);
+    }
+};
+
+  const modificado = (id, counter) => {
+    const elementAdd = document.getElementById(`option_${counter}`);
+    const elementRemove = document.getElementById(
+      `option_${id === "up" ? counter + 1 : counter - 1}`
+    );
+    elementAdd.classList.add("selected");
+    elementRemove.classList.remove("selected");
+  };
   return (
     <div className="console-main-design">
       {mobile ? (
@@ -105,7 +147,11 @@ export const Console = () => {
                 </Col>
                 <Col className="left-controller" xs={2} md={2}>
                   <Row className="d-flex justify-content-end">
-                    <Col xs={2} className="botton-low" onClick={()=>decreaseFontSize()}></Col>
+                    <Col
+                      xs={2}
+                      className="botton-low"
+                      onClick={() => decreaseFontSize()}
+                    ></Col>
                     <Col xs={0} md={1}></Col>
                   </Row>
                   <Row className="d-flex justify-content-center">
@@ -123,7 +169,10 @@ export const Console = () => {
                           md={12}
                           className="d-flex justify-content-center"
                         >
-                          <div className="arrows arrow-up">
+                          <div
+                            onClick={() => moveUp()}
+                            className="arrows arrow-up"
+                          >
                             <p>
                               <FontAwesomeIcon
                                 icon={faCaretUp}
@@ -165,7 +214,10 @@ export const Console = () => {
                           md={12}
                           className="d-flex justify-content-center"
                         >
-                          <div className="arrows arrow-down">
+                          <div
+                            onClick={() => moveDown()}
+                            className="arrows arrow-down"
+                          >
                             <p>
                               <FontAwesomeIcon
                                 icon={faCaretDown}
@@ -194,6 +246,7 @@ export const Console = () => {
                               {menu ? (
                                 <Row className="d-flex justify-content-center">
                                   <Col
+                                    id="option_1"
                                     xs={11}
                                     md={10}
                                     className="cell-menu mt-4 selected"
@@ -202,47 +255,88 @@ export const Console = () => {
                                       Option 1
                                     </h1>
                                   </Col>
-                                  <Col xs={11} md={10} className="cell-menu">
+                                  <Col
+                                    id="option_2"
+                                    xs={11}
+                                    md={10}
+                                    className="cell-menu"
+                                  >
                                     <h1 className="text-start menu-options">
                                       Option 2
                                     </h1>
                                   </Col>
-                                  <Col xs={11} md={10} className="cell-menu">
+                                  <Col
+                                    id="option_3"
+                                    xs={11}
+                                    md={10}
+                                    className="cell-menu"
+                                  >
                                     <h1 className="text-start menu-options">
                                       Option 3
                                     </h1>
                                   </Col>
-                                  <Col xs={11} md={10} className="cell-menu">
+                                  <Col
+                                    id="option_4"
+                                    xs={11}
+                                    md={10}
+                                    className="cell-menu"
+                                  >
                                     <h1 className="text-start menu-options">
                                       Option 4
                                     </h1>
                                   </Col>
-                                  <Col xs={11} md={10} className="cell-menu">
+                                  <Col
+                                    id="option_5"
+                                    xs={11}
+                                    md={10}
+                                    className="cell-menu"
+                                  >
                                     <h1 className="text-start menu-options">
                                       Option 5
                                     </h1>
                                   </Col>
-                                  <Col xs={11} md={10} className="cell-menu">
+                                  <Col
+                                    id="option_6"
+                                    xs={11}
+                                    md={10}
+                                    className="cell-menu"
+                                  >
                                     <h1 className="text-start menu-options">
                                       Option 6
                                     </h1>
                                   </Col>
-                                  <Col xs={11} md={10} className="cell-menu">
+                                  <Col
+                                    id="option_7"
+                                    xs={11}
+                                    md={10}
+                                    className="cell-menu"
+                                  >
                                     <h1 className="text-start menu-options">
                                       Option 7
                                     </h1>
                                   </Col>
-                                  <Col xs={11} md={10} className="cell-menu">
+                                  <Col
+                                    id="option_8"
+                                    xs={11}
+                                    md={10}
+                                    className="cell-menu"
+                                  >
                                     <h1 className="text-start menu-options">
                                       Option 8
                                     </h1>
                                   </Col>
-                                  <Col xs={11} md={10} className="cell-menu">
+                                  <Col
+                                    id="option_9"
+                                    xs={11}
+                                    md={10}
+                                    className="cell-menu"
+                                  >
                                     <h1 className="text-start menu-options">
                                       Option 9
                                     </h1>
                                   </Col>
                                   <Col
+                                    id="option_10"
                                     xs={11}
                                     md={10}
                                     className="cell-menu mb-4"
@@ -281,13 +375,13 @@ export const Console = () => {
                       xs={2}
                       md={1}
                       className="botton-plus-hover botton-plus-bar-horizontal"
-                      onClick={()=>increaseFontSize()}
+                      onClick={() => increaseFontSize()}
                     ></Col>
                     <Col
                       xs={1}
                       md={1}
                       className="botton-plus-hover botton-plus-bar-vertical"
-                      onClick={()=>increaseFontSize()}
+                      onClick={() => increaseFontSize()}
                     ></Col>
                   </Row>
 
