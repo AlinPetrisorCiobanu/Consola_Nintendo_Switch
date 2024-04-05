@@ -100,6 +100,7 @@ export const Console = () => {
     if (switchedOn && counterSelection.valor > 1 && counterSelection.valor <= 10) {
         counterSelection.resta();
         modificado("up", counterSelection.valor);
+        document.querySelector(".selected").scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
 };
 
@@ -107,6 +108,7 @@ const moveDown = () => {
     if (switchedOn && counterSelection.valor >= 1 && counterSelection.valor < 10) {
         counterSelection.suma();
         modificado("down", counterSelection.valor);
+        document.querySelector(".selected").scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
 };
 
