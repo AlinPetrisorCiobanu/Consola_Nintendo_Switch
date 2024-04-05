@@ -101,6 +101,7 @@
         background-color: black;
         color: aliceblue;
         text-align: center;
+        overflow: scroll;
 
         .logo-nintendo {
           padding: 3px;
@@ -108,7 +109,19 @@
           padding-right: 10px;
           border: 2px solid aliceblue;
           border-radius: 50px;
+          margin-top: 160px;
         }
+        .cell-menu{
+          margin-top: 15px;
+          margin-bottom: 15px;
+          border-radius: 10px;
+          border-bottom: 2px solid rgba(99, 99, 99, 0.406);
+          .menu-options{
+          color: black;
+          font-size: 1.2rem;
+        }
+        }
+        
       }
     }
     .right-controller {
