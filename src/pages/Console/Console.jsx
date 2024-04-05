@@ -49,15 +49,32 @@ export const Console = () => {
     setTimeout(() => {
       setOnOff(!onOff);
       const color = onOff ? "" : "aliceblue";
+      const color_display = onOff ? "" : "aliceblue";
       document
         .querySelectorAll(".power-on")
         .forEach((element) => (element.style.color = color));
       setTimeout(() => {
         setSwitchedOn(!switchedOn);
-        document.querySelector(".display").style.backgroundColor = color;
+        setMenu(!menu)
+        document.querySelector(".display").style.backgroundColor =
+          color_display;
       }, 1500);
     }, 300);
   };
+
+  const decreaseFontSize = () => {
+    switchedOn && document.querySelectorAll(".menu-options").forEach(element => {
+      let current_size = parseFloat(window.getComputedStyle(element, null).getPropertyValue('font-size'));
+      current_size > 8 && (element.style.fontSize = (current_size - 1) + 'px');
+    });
+  }
+
+  const increaseFontSize = () => {
+    switchedOn && document.querySelectorAll(".menu-options").forEach(element => {
+      let currentSize = parseFloat(window.getComputedStyle(element, null).getPropertyValue('font-size'));
+      element.style.fontSize = (currentSize + 1) + 'px';
+    });
+  }
 
   return (
     <div className="console-main-design">
@@ -88,7 +105,7 @@ export const Console = () => {
                 </Col>
                 <Col className="left-controller" xs={2} md={2}>
                   <Row className="d-flex justify-content-end">
-                    <Col xs={2} className="botton-low"></Col>
+                    <Col xs={2} className="botton-low" onClick={()=>decreaseFontSize()}></Col>
                     <Col xs={0} md={1}></Col>
                   </Row>
                   <Row className="d-flex justify-content-center">
@@ -171,51 +188,89 @@ export const Console = () => {
                   <Row>
                     {onOff ? (
                       <Col className="display">
-                          {switchedOn ? (
-                            <Row className="d-flex justify-content-center">
-                              <Col xs={11} md={10} className="cell-menu mt-4">
-                                <h1 className="text-start menu-options">Option 1</h1>
-                              </Col>
-                              <Col xs={11} md={10} className="cell-menu">
-                                <h1 className="text-start menu-options">Option 2</h1>
-                              </Col>
-                              <Col xs={11} md={10} className="cell-menu">
-                                <h1 className="text-start menu-options">Option 3</h1>
-                              </Col>
-                              <Col xs={11} md={10} className="cell-menu">
-                                <h1 className="text-start menu-options">Option 4</h1>
-                              </Col>
-                              <Col xs={11} md={10} className="cell-menu">
-                                <h1 className="text-start menu-options">Option 5</h1>
-                              </Col>
-                              <Col xs={11} md={10} className="cell-menu">
-                                <h1 className="text-start menu-options">Option 6</h1>
-                              </Col>
-                              <Col xs={11} md={10} className="cell-menu">
-                                <h1 className="text-start menu-options">Option 7</h1>
-                              </Col>
-                              <Col xs={11} md={10} className="cell-menu">
-                                <h1 className="text-start menu-options">Option 8</h1>
-                              </Col>
-                              <Col xs={11} md={10} className="cell-menu">
-                                <h1 className="text-start menu-options">Option 9</h1>
-                              </Col>
-                              <Col xs={11} md={10} className="cell-menu mb-4">
-                                <h1 className="text-start menu-options">Option 10</h1>
-                              </Col>
-                            </Row>
-                          ) : (
-                            <Row>
-                              <Col className="d-flex justify-content-center align-items-center">
-                                <h1 className="logo-nintendo">Nintendoº</h1>
-                              </Col>
-                            </Row>
-                          )}
+                        {switchedOn ? (
+                          <Row>
+                            <Col>
+                              {menu ? (
+                                <Row className="d-flex justify-content-center">
+                                  <Col
+                                    xs={11}
+                                    md={10}
+                                    className="cell-menu mt-4"
+                                  >
+                                    <h1 className="text-start menu-options">
+                                      Option 1
+                                    </h1>
+                                  </Col>
+                                  <Col xs={11} md={10} className="cell-menu">
+                                    <h1 className="text-start menu-options">
+                                      Option 2
+                                    </h1>
+                                  </Col>
+                                  <Col xs={11} md={10} className="cell-menu">
+                                    <h1 className="text-start menu-options">
+                                      Option 3
+                                    </h1>
+                                  </Col>
+                                  <Col xs={11} md={10} className="cell-menu">
+                                    <h1 className="text-start menu-options">
+                                      Option 4
+                                    </h1>
+                                  </Col>
+                                  <Col xs={11} md={10} className="cell-menu">
+                                    <h1 className="text-start menu-options">
+                                      Option 5
+                                    </h1>
+                                  </Col>
+                                  <Col xs={11} md={10} className="cell-menu">
+                                    <h1 className="text-start menu-options">
+                                      Option 6
+                                    </h1>
+                                  </Col>
+                                  <Col xs={11} md={10} className="cell-menu">
+                                    <h1 className="text-start menu-options">
+                                      Option 7
+                                    </h1>
+                                  </Col>
+                                  <Col xs={11} md={10} className="cell-menu">
+                                    <h1 className="text-start menu-options">
+                                      Option 8
+                                    </h1>
+                                  </Col>
+                                  <Col xs={11} md={10} className="cell-menu">
+                                    <h1 className="text-start menu-options">
+                                      Option 9
+                                    </h1>
+                                  </Col>
+                                  <Col
+                                    xs={11}
+                                    md={10}
+                                    className="cell-menu mb-4"
+                                  >
+                                    <h1 className="text-start menu-options">
+                                      Option 10
+                                    </h1>
+                                  </Col>
+                                </Row>
+                              ) : (
+                                <Row>
+                                  <Col>
+                                    <h1>Nada</h1>
+                                  </Col>
+                                </Row>
+                              )}
+                            </Col>
+                          </Row>
+                        ) : (
+                          <Row>
+                            <Col className="d-flex justify-content-center align-items-center">
+                              <h1 className="logo-nintendo">Nintendoº</h1>
+                            </Col>
+                          </Row>
+                        )}
                       </Col>
                     ) : (
-                      <Col className="display">
-                        
-                      </Col>
+                      <Col className="display"></Col>
                     )}
                   </Row>
                 </Col>
@@ -226,11 +281,13 @@ export const Console = () => {
                       xs={2}
                       md={1}
                       className="botton-plus-hover botton-plus-bar-horizontal"
+                      onClick={()=>increaseFontSize()}
                     ></Col>
                     <Col
                       xs={1}
                       md={1}
                       className="botton-plus-hover botton-plus-bar-vertical"
+                      onClick={()=>increaseFontSize()}
                     ></Col>
                   </Row>
 
