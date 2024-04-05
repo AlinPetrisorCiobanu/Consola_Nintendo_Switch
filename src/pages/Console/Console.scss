@@ -3,7 +3,8 @@
   background-color: antiquewhite;
   width: 100vw;
   height: 100vh;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   /* ---- DISEÑO DE LA CONSOLA  -----*/
   .top-bar {
@@ -129,6 +130,7 @@
           transition: transform 0.3s ease, box-shadow 0.3s ease; 
           transform: translateY(-2px) scale(1.05);
           box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+          margin: 30px;
         }
       }
     }

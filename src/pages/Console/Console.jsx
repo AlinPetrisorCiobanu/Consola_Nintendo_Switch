@@ -18,16 +18,7 @@ export const Console = () => {
   const [onOff, setOnOff] = useState(false);
   const [switchedOn, setSwitchedOn] = useState(false);
   const [menu, setMenu] = useState(false);
-  const [menu1, setMenu1] = useState(false);
-  const [menu2, setMenu2] = useState(false);
-  const [menu3, setMenu3] = useState(false);
-  const [menu4, setMenu4] = useState(false);
-  const [menu5, setMenu5] = useState(false);
-  const [menu6, setMenu6] = useState(false);
-  const [menu7, setMenu7] = useState(false);
-  const [menu8, setMenu8] = useState(false);
-  const [menu9, setMenu9] = useState(false);
-  const [menu10, setMenu10] = useState(false);
+  const [subMenus, setSubMenus] = useState(Array(10).fill(false));
 
   class CounterSelectMain {
     valor = 1;
@@ -96,21 +87,54 @@ export const Console = () => {
       });
   };
 
-  const moveUp = () => {
-    if (switchedOn && counterSelection.valor > 1 && counterSelection.valor <= 10) {
-        counterSelection.resta();
-        modificado("up", counterSelection.valor);
-        document.querySelector(".selected").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  const handleKeyDown = (event) => {
+    switch (event.key) {
+      case "ArrowUp":
+        moveUp();
+        break;
+      case "ArrowDown":
+        moveDown();
+        break;
+      case "ArrowLeft":
+        console.log("left");
+        break;
+      case "ArrowRight":
+        console.log("right");
+        break;
+      default:
+        break;
     }
-};
+  };
 
-const moveDown = () => {
-    if (switchedOn && counterSelection.valor >= 1 && counterSelection.valor < 10) {
-        counterSelection.suma();
-        modificado("down", counterSelection.valor);
-        document.querySelector(".selected").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  window.addEventListener("keydown", handleKeyDown);
+
+  const moveUp = () => {
+    if (
+      switchedOn &&
+      counterSelection.valor > 1 &&
+      counterSelection.valor <= 10
+    ) {
+      counterSelection.resta();
+      modificado("up", counterSelection.valor);
+      document
+        .querySelector(".selected")
+        .scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
-};
+  };
+
+  const moveDown = () => {
+    if (
+      switchedOn &&
+      counterSelection.valor >= 1 &&
+      counterSelection.valor < 10
+    ) {
+      counterSelection.suma();
+      modificado("down", counterSelection.valor);
+      document
+        .querySelector(".selected")
+        .scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  };
 
   const modificado = (id, counter) => {
     const elementAdd = document.getElementById(`option_${counter}`);
@@ -120,6 +144,20 @@ const moveDown = () => {
     elementAdd.classList.add("selected");
     elementRemove.classList.remove("selected");
   };
+
+  const submit = (counter) => {
+    if (counter === 0) {
+      setMenu(!menu);
+    } else if (counter >= 1 && counter <= 10) {
+      setSubMenus((prevSubMenus) => {
+        const updatedSubMenus = [...prevSubMenus];
+        updatedSubMenus[counter - 1] = !updatedSubMenus[counter - 1];
+        setMenu(false);
+        return updatedSubMenus;
+      });
+    }
+  };
+
   return (
     <div className="console-main-design">
       {mobile ? (
@@ -349,10 +387,75 @@ const moveDown = () => {
                                   </Col>
                                 </Row>
                               ) : (
-                                <Row>
-                                  <Col>
-                                    <h1>Nada</h1>
-                                  </Col>
+                                <Row className="bg-dark">
+                                  {subMenus.map(
+                                    (subMenu, index) =>
+                                      subMenu && (
+                                        <Col key={index} xs={12} md={6} lg={4}>
+                                          {index === 0 ? (
+                                            <Row>
+                                              <Col>
+                                                <p>1</p>
+                                              </Col>
+                                            </Row>
+                                          ) : index === 1 ? (
+                                            <Row>
+                                              <Col>
+                                                <p>2</p>
+                                              </Col>
+                                            </Row>
+                                          ) : index === 2 ? (
+                                            <Row>
+                                              <Col>
+                                                <p>3</p>
+                                              </Col>
+                                            </Row>
+                                          ) : index === 3 ? (
+                                            <Row>
+                                              <Col>
+                                                <p>4</p>
+                                              </Col>
+                                            </Row>
+                                          ) : index === 4 ? (
+                                            <Row>
+                                              <Col>
+                                                <p>5</p>
+                                              </Col>
+                                            </Row>
+                                          ) : index === 5 ? (
+                                            <Row>
+                                              <Col>
+                                                <p>6</p>
+                                              </Col>
+                                            </Row>
+                                          ) : index === 6 ? (
+                                            <Row>
+                                              <Col>
+                                                <p>7</p>
+                                              </Col>
+                                            </Row>
+                                          ) : index === 7 ? (
+                                            <Row>
+                                              <Col>
+                                                <p>8</p>
+                                              </Col>
+                                            </Row>
+                                          ) : index === 8 ? (
+                                            <Row>
+                                              <Col>
+                                                <p>9</p>
+                                              </Col>
+                                            </Row>
+                                          ) : (
+                                            <Row>
+                                              <Col>
+                                                <p>10</p>
+                                              </Col>
+                                            </Row>
+                                          )}
+                                        </Col>
+                                      )
+                                  )}
                                 </Row>
                               )}
                             </Col>
@@ -413,7 +516,10 @@ const moveDown = () => {
                           md={6}
                           className="d-flex justify-content-center"
                         >
-                          <div className="abxy button-a">
+                          <div
+                            onClick={() => submit(counterSelection.valor)}
+                            className="abxy button-a"
+                          >
                             <p className="power-on">A</p>
                           </div>
                         </Col>
