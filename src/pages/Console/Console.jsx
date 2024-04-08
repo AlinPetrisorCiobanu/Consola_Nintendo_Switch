@@ -13,26 +13,31 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./Console.scss";
 
+class CounterSelectMain {
+  valor = 1;
+  constructor() {
+    this.valor = 1;
+  }
+  suma() {
+    this.valor++;
+  }
+  resta() {
+    this.valor--;
+  }
+  reset(){
+    this.valor = 1;
+  }
+}
+
 export const Console = () => {
   const [mobile, setMobile] = useState(false);
   const [onOff, setOnOff] = useState(false);
   const [switchedOn, setSwitchedOn] = useState(false);
   const [menu, setMenu] = useState(false);
   const [subMenus, setSubMenus] = useState(Array(10).fill(false));
-
-  class CounterSelectMain {
-    valor = 1;
-    constructor() {
-      this.valor = 1;
-    }
-    suma() {
-      this.valor++;
-    }
-    resta() {
-      this.valor--;
-    }
-  }
-  const counterSelection = new CounterSelectMain();
+  const [counterSelection] = useState(new CounterSelectMain());
+  const [handlingKey, setHandlingKey] = useState(false);
+  // const counterSelection = new CounterSelectMain();
 
   // Control de orientación de la pantalla .
   useEffect(() => {
@@ -87,29 +92,35 @@ export const Console = () => {
       });
   };
 
-  const handleKey = (event) => {
-    switch (event.key) {
-      case "ArrowUp":
-        moveUp();
-        break;
-      case "ArrowDown":
-        moveDown();
-        break;
-      case "ArrowLeft":
-        console.log("left");
-        break;
-      case "ArrowRight":
-        console.log("right");
-        break;
-      case "Enter":
-        submit();
-        break;
-      default:
-        break;
-    }
-  };
-
-  window.addEventListener("keydown", handleKey);
+  useEffect(() => {
+    const handleKey = (event) => {
+      switch (event.key) {
+        case "ArrowUp":
+          moveUp();
+          break;
+        case "ArrowDown":
+          moveDown();
+          break;
+        case "ArrowLeft":
+          console.log("left");
+          break;
+        case "ArrowRight":
+          console.log("right");
+          break;
+        case "Enter":
+          submit(counterSelection.valor);
+          break;
+        default:
+          break;
+      }
+    };
+  
+    window.addEventListener("keydown", handleKey);
+  
+    return () => {
+      window.removeEventListener("keydown", handleKey);
+    };
+  }, [counterSelection.value]);
 
   const moveUp = () => {
     if (
@@ -119,12 +130,9 @@ export const Console = () => {
     ) {
       counterSelection.resta();
       modificado("up", counterSelection.valor);
-      document
-        .querySelector(".selected")
-        .scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
   };
-
+  
   const moveDown = () => {
     if (
       switchedOn &&
@@ -133,9 +141,7 @@ export const Console = () => {
     ) {
       counterSelection.suma();
       modificado("down", counterSelection.valor);
-      document
-        .querySelector(".selected")
-        .scrollIntoView({ behavior: "smooth", block: "nearest" });
+      document.querySelector(".selected").scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
   };
 
@@ -146,6 +152,7 @@ export const Console = () => {
     );
     elementAdd.classList.add("selected");
     elementRemove.classList.remove("selected");
+    document.querySelector(".selected").scrollIntoView({ behavior: "smooth", block: "nearest" });
   };
 
   const submit = (counter) => {
@@ -163,7 +170,7 @@ export const Console = () => {
 
   const home = () => {
     setMenu(true)
-    
+    counterSelection.reset()
     setSubMenus(subMenus.map(() => false))
   }
 

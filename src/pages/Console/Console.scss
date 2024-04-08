@@ -27,7 +27,7 @@
     .left-controller {
       border: 3px solid black;
       border-radius: 40px 10px 10px 40px;
-      background-color: aqua;
+      background-color: #00c3e3;
 
       .botton-low {
         background-color: rgb(0, 0, 0);
@@ -137,7 +137,7 @@
     .right-controller {
       border: 3px solid black;
       border-radius: 10px 40px 40px 10px;
-      background-color: rgb(0, 255, 30);
+      background-color: #ff4554;
 
       .botton-plus {
         .botton-plus-bar-horizontal {
@@ -257,7 +257,7 @@
       }
     }
     .console-design {
-      margin-top: 0vh;
+      margin-top: -20px;
       height: 260px;
       width: 98vw;
       .left-controller {
@@ -316,6 +316,9 @@
         .display {
           height: 240px;
           margin: 1vw;
+          .logo-nintendo {
+            margin-top: 100px;
+          }
         }
       }
       .right-controller {
