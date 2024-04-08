@@ -510,11 +510,6 @@ export const Console = () => {
                                                       {caracteres.length > 0 &&
                                                         caracteres.map(
                                                           (individuos) => {
-                                                            console.log(
-                                                              Object.keys(
-                                                                dateCaracters
-                                                              ).length
-                                                            );
                                                             return (
                                                               <>
                                                                 <div
