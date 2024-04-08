@@ -22,8 +22,11 @@ Antes de la remasterización, el proyecto estaba desarrollado con HTML, CSS , Ja
 
 Ahora, el proyecto ha sido totalmente remasterizado utilizando REACT, SASS y REACT-BOOTSTRAP, logrando una responsividad del 100%. Aquí adjunto fotos de cómo luce ahora:
 
+* También se ha agregado un botón de información para guiar a los usuarios a través de los pasos necesarios.
+
 <p align="center">
   <img src="./src/img/consola.png" alt="Proyecto Restaurante Remasterizado" width="700px">
+  <img src="./src/img/info.png" alt="Proyecto Restaurante Remasterizado" width="700px">
   <img src="./src/img/option1.png" alt="Proyecto Restaurante Remasterizado" width="700px">
   <img src="./src/img/option2.png" alt="Proyecto Restaurante Remasterizado" width="700px">
 </p>
