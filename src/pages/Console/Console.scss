@@ -127,10 +127,80 @@
           border: 2px solid transparent;
           background: linear-gradient(45deg, #00f7ff32, #56e52e2e);
           border-radius: 10px;
-          transition: transform 0.3s ease, box-shadow 0.3s ease; 
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
           transform: translateY(-2px) scale(1.05);
           box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
           margin: 30px;
+        }
+        .options-menu-pages {
+          padding-right:15px ;
+          padding-top: 20px;
+          padding-bottom: 50px;
+          .rick-and-morty-buttons{
+            padding: 2px;
+            padding-left: 4px;
+            padding-right: 4px;
+            border-radius: 8px;
+            margin: 10px;
+          }
+          .rick-and-morty {
+            margin-left: 10px;
+            margin-right: 10px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 50px;
+            justify-content: center;
+            .rick-and-morty-style {
+              padding: 3px;
+              text-align: center;
+              border-radius: 8px;
+              width: 100%;
+              max-width: 400px;
+              @media screen and (max-width: 500px) {
+                max-width: 300px;
+              }
+              height: auto;
+              h5 {
+                margin-top: 10px;
+                height: 50px;
+              }
+            }
+            .rick-and-morty-style:hover {
+              cursor: pointer;
+            }
+          }
+
+          .container_img {
+            margin-left: 10px;
+            margin-right: 10px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 50px;
+            justify-content: center;
+            .image-container {
+              text-align: center;
+              border-radius: 8px;
+              width: 100%;
+              max-width: 400px;
+              @media screen and (max-width: 500px) {
+                max-width: 300px;
+              }
+              height: auto;
+              p {
+                margin-top: 10px;
+              }
+            }
+          }
+        }
+        img {
+          border-radius: 8px;
+          width: 100%;
+          max-width: 400px;
+          @media screen and (max-width: 500px) {
+            max-width: 300px;
+          }
+          height: auto;
+          box-shadow: 0px 0px 10px 2px #000;
         }
       }
     }

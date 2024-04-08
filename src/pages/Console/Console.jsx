@@ -12,6 +12,7 @@ import {
   faHouse,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Console.scss";
+import { getBaseDatos } from "../../services/apiCalls";
 
 class CounterSelectMain {
   valor = 1;
@@ -24,7 +25,7 @@ class CounterSelectMain {
   resta() {
     this.valor--;
   }
-  reset(){
+  reset() {
     this.valor = 1;
   }
 }
@@ -36,8 +37,12 @@ export const Console = () => {
   const [menu, setMenu] = useState(false);
   const [subMenus, setSubMenus] = useState(Array(10).fill(false));
   const [counterSelection] = useState(new CounterSelectMain());
-  const [handlingKey, setHandlingKey] = useState(false);
-  // const counterSelection = new CounterSelectMain();
+
+  const [caracteres, setCaracteres] = useState([]);
+  const [totalPage, setPages] = useState();
+  const [page, setPage] = useState(1);
+
+  const [dateCaracters, setDateCaracters] = useState({});
 
   // Control de orientación de la pantalla .
   useEffect(() => {
@@ -114,34 +119,28 @@ export const Console = () => {
           break;
       }
     };
-  
+
     window.addEventListener("keydown", handleKey);
-  
+
     return () => {
       window.removeEventListener("keydown", handleKey);
     };
   }, [counterSelection.value]);
 
   const moveUp = () => {
-    if (
-      switchedOn &&
-      counterSelection.valor > 1 &&
-      counterSelection.valor <= 10
-    ) {
+    if (counterSelection.valor > 1 && counterSelection.valor <= 10) {
       counterSelection.resta();
       modificado("up", counterSelection.valor);
     }
   };
-  
+
   const moveDown = () => {
-    if (
-      switchedOn &&
-      counterSelection.valor >= 1 &&
-      counterSelection.valor < 10
-    ) {
+    if (counterSelection.valor >= 1 && counterSelection.valor < 10) {
       counterSelection.suma();
       modificado("down", counterSelection.valor);
-      document.querySelector(".selected").scrollIntoView({ behavior: "smooth", block: "nearest" });
+      document
+        .querySelector(".selected")
+        .scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
   };
 
@@ -152,7 +151,9 @@ export const Console = () => {
     );
     elementAdd.classList.add("selected");
     elementRemove.classList.remove("selected");
-    document.querySelector(".selected").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    document
+      .querySelector(".selected")
+      .scrollIntoView({ behavior: "smooth", block: "nearest" });
   };
 
   const submit = (counter) => {
@@ -169,10 +170,30 @@ export const Console = () => {
   };
 
   const home = () => {
-    setMenu(true)
-    counterSelection.reset()
-    setSubMenus(subMenus.map(() => false))
-  }
+    setMenu(true);
+    counterSelection.reset();
+    setSubMenus(subMenus.map(() => false));
+    setDateCaracters({});
+  };
+
+  const dateBBD = (page) => {
+    getBaseDatos(page)
+      .then((res) => {
+        setPages(res.data.results.length);
+        const caracteres = res.data.results;
+        setCaracteres(caracteres);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    dateBBD(page);
+  }, [page]);
+
+  const transmitir = (ind) => {
+    const caracter = caracteres.find((e) => e.id === ind);
+    setDateCaracters(caracter);
+  };
 
   return (
     <div className="console-main-design">
@@ -309,7 +330,7 @@ export const Console = () => {
                                     className="cell-menu mt-4 selected"
                                   >
                                     <h1 className="text-start menu-options ">
-                                      Option 1
+                                      Rick and Morty
                                     </h1>
                                   </Col>
                                   <Col
@@ -413,21 +434,290 @@ export const Console = () => {
                                   </Col>
                                 </Row>
                               ) : (
-                                <Row className="bg-dark">
+                                <Row className="text-dark options-menu-pages">
                                   {subMenus.map(
                                     (subMenu, index) =>
                                       subMenu && (
-                                        <Col key={index} xs={12} md={6} lg={4}>
+                                        <Col
+                                          key={index}
+                                          xs={12}
+                                          md={12}
+                                          lg={12}
+                                        >
                                           {index === 0 ? (
                                             <Row>
-                                              <Col>
-                                                <p>1</p>
+                                              <Col
+                                                className="mt-5"
+                                                xs={12}
+                                                md={12}
+                                              >
+                                                <h3>Rick and Morty</h3>
+                                              </Col>
+                                              <Col
+                                                className="mt-5"
+                                                xs={12}
+                                                md={12}
+                                              >
+                                                {Object.keys(dateCaracters)
+                                                  .length > 0 ? (
+                                                  <>
+                                                    <h6>name : {dateCaracters.name}</h6>
+                                                    <p>id : {dateCaracters.id}</p>
+                                                    <p>status : {dateCaracters.status}</p>
+                                                    <p>species : {dateCaracters.species}</p>
+                                                    <p>type : {dateCaracters.type}</p>
+                                                    <h6>{dateCaracters.url}</h6>
+                                                    <img
+                                                      src={dateCaracters.image}
+                                                    />
+                                                  </>
+                                                ) : (
+                                                  <Row>
+                                                    <Col
+                                                      className="mt-4"
+                                                      xs={12}
+                                                      md={12}
+                                                    >
+                                                      <button
+                                                        className="rick-and-morty-buttons"
+                                                        onClick={() =>
+                                                          setPage(page - 1)
+                                                        }
+                                                        disabled={page === 1}
+                                                      >
+                                                        prev
+                                                      </button>
+                                                      <span>
+                                                        {page} of {totalPage}
+                                                      </span>
+                                                      <button
+                                                        className="rick-and-morty-buttons"
+                                                        onClick={() =>
+                                                          setPage(page + 1)
+                                                        }
+                                                        disabled={
+                                                          page === totalPage
+                                                        }
+                                                      >
+                                                        next
+                                                      </button>
+                                                    </Col>
+                                                    <Col
+                                                      xs={12}
+                                                      md={12}
+                                                      className="mt-5 rick-and-morty"
+                                                    >
+                                                      {caracteres.length > 0 &&
+                                                        caracteres.map(
+                                                          (individuos) => {
+                                                            console.log(
+                                                              Object.keys(
+                                                                dateCaracters
+                                                              ).length
+                                                            );
+                                                            return (
+                                                              <>
+                                                                <div
+                                                                  className="rick-and-morty-style"
+                                                                  key={
+                                                                    individuos.id
+                                                                  }
+                                                                  onClick={() =>
+                                                                    transmitir(
+                                                                      individuos.id
+                                                                    )
+                                                                  }
+                                                                >
+                                                                  <h5>
+                                                                    {
+                                                                      individuos.name
+                                                                    }
+                                                                  </h5>
+                                                                  <img
+                                                                    src={
+                                                                      individuos.image
+                                                                    }
+                                                                  />
+                                                                </div>
+                                                              </>
+                                                            );
+                                                          }
+                                                        )}
+                                                    </Col>
+                                                  </Row>
+                                                )}
                                               </Col>
                                             </Row>
                                           ) : index === 1 ? (
                                             <Row>
                                               <Col>
                                                 <p>2</p>
+                                              </Col>
+                                              <Col>
+                                                <Row className="container_img">
+                                                  <div
+                                                    className="image-container"
+                                                    onClick={() => project(1)}
+                                                  >
+                                                    <img
+                                                      src="https://static.wikia.nocookie.net/rickandmorty/images/3/3f/Young_Adult_Rick.png/revision/latest?cb=20230316221017"
+                                                      alt="project"
+                                                    />
+                                                    <p>Rick Sanchez</p>
+                                                  </div>
+                                                  <div
+                                                    className="image-container"
+                                                    onClick={() => project(2)}
+                                                  >
+                                                    <img
+                                                      src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
+                                                      alt="project"
+                                                    />
+                                                    <p>Titulo del Proyecto 2</p>
+                                                  </div>
+                                                  <div
+                                                    className="image-container"
+                                                    onClick={() => project(3)}
+                                                  >
+                                                    <img
+                                                      src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
+                                                      alt="project"
+                                                    />
+                                                    <p>Titulo del Proyecto 3</p>
+                                                  </div>
+                                                  <div
+                                                    className="image-container"
+                                                    onClick={() => project(4)}
+                                                  >
+                                                    <img
+                                                      src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
+                                                      alt="project"
+                                                    />
+                                                    <p>Titulo del Proyecto 4</p>
+                                                  </div>
+                                                  <div
+                                                    className="image-container"
+                                                    onClick={() => project(5)}
+                                                  >
+                                                    <img
+                                                      src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
+                                                      alt="project"
+                                                    />
+                                                    <p>Titulo del Proyecto 5</p>
+                                                  </div>
+                                                  <div
+                                                    className="image-container"
+                                                    onClick={() => project(6)}
+                                                  >
+                                                    <img
+                                                      src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
+                                                      alt="project"
+                                                    />
+                                                    <p>Titulo del Proyecto 6</p>
+                                                  </div>
+                                                  <div
+                                                    className="image-container"
+                                                    onClick={() => project(7)}
+                                                  >
+                                                    <img
+                                                      src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
+                                                      alt="project"
+                                                    />
+                                                    <p>Titulo del Proyecto 7</p>
+                                                  </div>
+                                                  <div
+                                                    className="image-container"
+                                                    onClick={() => project(8)}
+                                                  >
+                                                    <img
+                                                      src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
+                                                      alt="project"
+                                                    />
+                                                    <p>Titulo del Proyecto 8</p>
+                                                  </div>
+                                                  <div
+                                                    className="image-container"
+                                                    onClick={() => project(9)}
+                                                  >
+                                                    <img
+                                                      src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
+                                                      alt="project"
+                                                    />
+                                                    <p>Titulo del Proyecto 9</p>
+                                                  </div>
+                                                  <div
+                                                    className="image-container"
+                                                    onClick={() => project(10)}
+                                                  >
+                                                    <img
+                                                      src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
+                                                      alt="project"
+                                                    />
+                                                    <p>
+                                                      Titulo del Proyecto 10
+                                                    </p>
+                                                  </div>
+                                                  <div
+                                                    className="image-container"
+                                                    onClick={() => project(11)}
+                                                  >
+                                                    <img
+                                                      src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
+                                                      alt="project"
+                                                    />
+                                                    <p>
+                                                      Titulo del Proyecto 11
+                                                    </p>
+                                                  </div>
+                                                  <div
+                                                    className="image-container"
+                                                    onClick={() => project(12)}
+                                                  >
+                                                    <img
+                                                      src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
+                                                      alt="project"
+                                                    />
+                                                    <p>
+                                                      Titulo del Proyecto 12
+                                                    </p>
+                                                  </div>
+                                                  <div
+                                                    className="image-container"
+                                                    onClick={() => project(13)}
+                                                  >
+                                                    <img
+                                                      src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
+                                                      alt="project"
+                                                    />
+                                                    <p>
+                                                      Titulo del Proyecto 13
+                                                    </p>
+                                                  </div>
+                                                  <div
+                                                    className="image-container"
+                                                    onClick={() => project(14)}
+                                                  >
+                                                    <img
+                                                      src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
+                                                      alt="project"
+                                                    />
+                                                    <p>
+                                                      Titulo del Proyecto 14
+                                                    </p>
+                                                  </div>
+                                                  <div
+                                                    className="image-container"
+                                                    onClick={() => project(15)}
+                                                  >
+                                                    <img
+                                                      src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
+                                                      alt="project"
+                                                    />
+                                                    <p>
+                                                      Titulo del Proyecto 14
+                                                    </p>
+                                                  </div>
+                                                </Row>
                                               </Col>
                                             </Row>
                                           ) : index === 2 ? (
@@ -569,7 +859,7 @@ export const Console = () => {
                     </Col>
                   </Row>
                   <Row className="d-flex justify-content-start">
-                    <Col onClick={()=>home()} className="right-button-home">
+                    <Col onClick={() => home()} className="right-button-home">
                       <Row>
                         <Col className="right-home">
                           <FontAwesomeIcon
