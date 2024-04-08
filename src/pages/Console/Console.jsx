@@ -347,7 +347,7 @@ export const Console = () => {
                                     className="cell-menu"
                                   >
                                     <h1 className="text-start menu-options">
-                                      Option 2
+                                      Proyectos
                                     </h1>
                                   </Col>
                                   <Col
@@ -565,20 +565,20 @@ export const Console = () => {
                                             </Row>
                                           ) : index === 1 ? (
                                             <Row>
-                                              <Col>
-                                                <p>2</p>
+                                              <Col className="mt-5" xs={12} md={12}>
+                                                <p>Proyectos 2</p>
                                               </Col>
-                                              <Col>
+                                              <Col className="mt-5">
                                                 <Row className="container_img">
                                                   <div
                                                     className="image-container"
                                                     onClick={() => project(1)}
                                                   >
                                                     <img
-                                                      src="https://static.wikia.nocookie.net/rickandmorty/images/3/3f/Young_Adult_Rick.png/revision/latest?cb=20230316221017"
+                                                      src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
                                                       alt="project"
                                                     />
-                                                    <p>Rick Sanchez</p>
+                                                    <p>Proyecto 1</p>
                                                   </div>
                                                   <div
                                                     className="image-container"
@@ -588,7 +588,7 @@ export const Console = () => {
                                                       src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
                                                       alt="project"
                                                     />
-                                                    <p>Titulo del Proyecto 2</p>
+                                                    <p>Proyecto 2</p>
                                                   </div>
                                                   <div
                                                     className="image-container"
@@ -598,7 +598,7 @@ export const Console = () => {
                                                       src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
                                                       alt="project"
                                                     />
-                                                    <p>Titulo del Proyecto 3</p>
+                                                    <p>Proyecto 3</p>
                                                   </div>
                                                   <div
                                                     className="image-container"
@@ -608,7 +608,7 @@ export const Console = () => {
                                                       src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
                                                       alt="project"
                                                     />
-                                                    <p>Titulo del Proyecto 4</p>
+                                                    <p>Proyecto 4</p>
                                                   </div>
                                                   <div
                                                     className="image-container"
@@ -618,7 +618,7 @@ export const Console = () => {
                                                       src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
                                                       alt="project"
                                                     />
-                                                    <p>Titulo del Proyecto 5</p>
+                                                    <p>Proyecto 5</p>
                                                   </div>
                                                   <div
                                                     className="image-container"
@@ -628,7 +628,7 @@ export const Console = () => {
                                                       src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
                                                       alt="project"
                                                     />
-                                                    <p>Titulo del Proyecto 6</p>
+                                                    <p>Proyecto 6</p>
                                                   </div>
                                                   <div
                                                     className="image-container"
@@ -638,7 +638,7 @@ export const Console = () => {
                                                       src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
                                                       alt="project"
                                                     />
-                                                    <p>Titulo del Proyecto 7</p>
+                                                    <p>Proyecto 7</p>
                                                   </div>
                                                   <div
                                                     className="image-container"
@@ -648,7 +648,7 @@ export const Console = () => {
                                                       src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
                                                       alt="project"
                                                     />
-                                                    <p>Titulo del Proyecto 8</p>
+                                                    <p>Proyecto 8</p>
                                                   </div>
                                                   <div
                                                     className="image-container"
@@ -658,7 +658,7 @@ export const Console = () => {
                                                       src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
                                                       alt="project"
                                                     />
-                                                    <p>Titulo del Proyecto 9</p>
+                                                    <p>Proyecto 9</p>
                                                   </div>
                                                   <div
                                                     className="image-container"
@@ -669,7 +669,7 @@ export const Console = () => {
                                                       alt="project"
                                                     />
                                                     <p>
-                                                      Titulo del Proyecto 10
+                                                      Proyecto 10
                                                     </p>
                                                   </div>
                                                   <div
@@ -681,7 +681,7 @@ export const Console = () => {
                                                       alt="project"
                                                     />
                                                     <p>
-                                                      Titulo del Proyecto 11
+                                                      Proyecto 11
                                                     </p>
                                                   </div>
                                                   <div
@@ -693,7 +693,7 @@ export const Console = () => {
                                                       alt="project"
                                                     />
                                                     <p>
-                                                      Titulo del Proyecto 12
+                                                      Proyecto 12
                                                     </p>
                                                   </div>
                                                   <div
@@ -705,7 +705,7 @@ export const Console = () => {
                                                       alt="project"
                                                     />
                                                     <p>
-                                                      Titulo del Proyecto 13
+                                                      Proyecto 13
                                                     </p>
                                                   </div>
                                                   <div
@@ -717,7 +717,7 @@ export const Console = () => {
                                                       alt="project"
                                                     />
                                                     <p>
-                                                      Titulo del Proyecto 14
+                                                      Proyecto 14
                                                     </p>
                                                   </div>
                                                   <div
@@ -729,7 +729,7 @@ export const Console = () => {
                                                       alt="project"
                                                     />
                                                     <p>
-                                                      Titulo del Proyecto 14
+                                                      Proyecto 14
                                                     </p>
                                                   </div>
                                                 </Row>
