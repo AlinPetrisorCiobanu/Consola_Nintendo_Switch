@@ -34,6 +34,12 @@ Funcionalidades:
 
 * Las flechas actualmente están programadas para navegar por el menú. Las flechas hacia arriba y hacia abajo se utilizan para desplazarse por las opciones del menú. Para seleccionar una opción, se presiona la tecla A. Para retroceder en el menú, se presiona la tecla B.
 
+Extra:
+
+* Para la primera opción, se ha implementado el backend de Rick y Morty para proporcionar información relacionada con la serie.
+
+* La segunda opción está reservada para un proyecto futuro que estoy planeando desarrollar.
+
 Además, he utilizado las siguientes tecnologías en la remasterización del proyecto:
 
 <p align="center">
