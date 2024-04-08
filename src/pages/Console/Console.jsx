@@ -11,10 +11,8 @@ import {
   faHouse,
 } from "@fortawesome/free-solid-svg-icons";
 import { getBaseDatos } from "../../services/apiCalls";
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import "./Console.scss";
 import { MyVerticallyCenteredModal } from "../../common/Modal/Modal";
+import "./Console.scss";
 
 class CounterSelectMain {
   valor = 1;
@@ -131,19 +129,29 @@ export const Console = () => {
   }, [counterSelection.value]);
 
   const moveUp = () => {
-    if (counterSelection.valor > 1 && counterSelection.valor <= 10) {
-      counterSelection.resta();
-      modificado("up", counterSelection.valor);
+    if (!menu) {
+      const scrollable = document.querySelector(".display");
+      scrollable.scrollTop -= 100;
+    } else {
+      if (counterSelection.valor > 1 && counterSelection.valor <= 10) {
+        counterSelection.resta();
+        modificado("up", counterSelection.valor);
+      }
     }
   };
 
   const moveDown = () => {
-    if (counterSelection.valor >= 1 && counterSelection.valor < 10) {
-      counterSelection.suma();
-      modificado("down", counterSelection.valor);
-      document
-        .querySelector(".selected")
-        .scrollIntoView({ behavior: "smooth", block: "nearest" });
+    if (!menu) {
+      const scrollable = document.querySelector(".display");
+      scrollable.scrollTop += 100;
+    } else {
+      if (counterSelection.valor >= 1 && counterSelection.valor < 10) {
+        counterSelection.suma();
+        modificado("down", counterSelection.valor);
+        document
+          .querySelector(".selected")
+          .scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
     }
   };
 
@@ -222,9 +230,9 @@ export const Console = () => {
           <Row>
             <Col className="d-flex justify-content-center" xs={12} md={12}>
               <Row className=" console-design">
-            <Col xs={12} md={12} className="text-center mb-5 about-console">
-              <p onClick={() => setModalShow(true)}>about</p>
-            </Col>
+                <Col xs={12} md={12} className="text-center mb-5 about-console">
+                  <p onClick={() => setModalShow(true)}>about</p>
+                </Col>
                 <Col xs={12} md={12} className="top-bar">
                   <Row>
                     <Col xs={3} md={3}></Col>
@@ -461,7 +469,7 @@ export const Console = () => {
                                           lg={12}
                                         >
                                           {index === 0 ? (
-                                            <Row>
+                                            <Row key={index}>
                                               <Col
                                                 className="mt-5"
                                                 xs={12}
@@ -539,34 +547,30 @@ export const Console = () => {
                                                     >
                                                       {caracteres.length > 0 &&
                                                         caracteres.map(
-                                                          (individuos) => {
-                                                            return (
-                                                              <>
-                                                                <div
-                                                                  className="rick-and-morty-style"
-                                                                  key={
-                                                                    individuos.id
-                                                                  }
-                                                                  onClick={() =>
-                                                                    transmitir(
-                                                                      individuos.id
-                                                                    )
-                                                                  }
-                                                                >
-                                                                  <h5>
-                                                                    {
-                                                                      individuos.name
-                                                                    }
-                                                                  </h5>
-                                                                  <img
-                                                                    src={
-                                                                      individuos.image
-                                                                    }
-                                                                  />
-                                                                </div>
-                                                              </>
-                                                            );
-                                                          }
+                                                          (individuos) => (
+                                                            <div
+                                                              className="rick-and-morty-style"
+                                                              key={
+                                                                individuos.id
+                                                              }
+                                                              onClick={() =>
+                                                                transmitir(
+                                                                  individuos.id
+                                                                )
+                                                              }
+                                                            >
+                                                              <h5>
+                                                                {
+                                                                  individuos.name
+                                                                }
+                                                              </h5>
+                                                              <img
+                                                                src={
+                                                                  individuos.image
+                                                                }
+                                                              />
+                                                            </div>
+                                                          )
                                                         )}
                                                     </Col>
                                                   </Row>
@@ -574,8 +578,12 @@ export const Console = () => {
                                               </Col>
                                             </Row>
                                           ) : index === 1 ? (
-                                            <Row>
-                                              <Col className="mt-5" xs={12} md={12}>
+                                            <Row key={index}>
+                                              <Col
+                                                className="mt-5"
+                                                xs={12}
+                                                md={12}
+                                              >
                                                 <p>Proyectos 2</p>
                                               </Col>
                                               <Col className="mt-5">
@@ -678,9 +686,7 @@ export const Console = () => {
                                                       src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
                                                       alt="project"
                                                     />
-                                                    <p>
-                                                      Proyecto 10
-                                                    </p>
+                                                    <p>Proyecto 10</p>
                                                   </div>
                                                   <div
                                                     className="image-container"
@@ -690,9 +696,7 @@ export const Console = () => {
                                                       src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
                                                       alt="project"
                                                     />
-                                                    <p>
-                                                      Proyecto 11
-                                                    </p>
+                                                    <p>Proyecto 11</p>
                                                   </div>
                                                   <div
                                                     className="image-container"
@@ -702,9 +706,7 @@ export const Console = () => {
                                                       src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
                                                       alt="project"
                                                     />
-                                                    <p>
-                                                      Proyecto 12
-                                                    </p>
+                                                    <p>Proyecto 12</p>
                                                   </div>
                                                   <div
                                                     className="image-container"
@@ -714,9 +716,7 @@ export const Console = () => {
                                                       src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
                                                       alt="project"
                                                     />
-                                                    <p>
-                                                      Proyecto 13
-                                                    </p>
+                                                    <p>Proyecto 13</p>
                                                   </div>
                                                   <div
                                                     className="image-container"
@@ -726,9 +726,7 @@ export const Console = () => {
                                                       src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
                                                       alt="project"
                                                     />
-                                                    <p>
-                                                      Proyecto 14
-                                                    </p>
+                                                    <p>Proyecto 14</p>
                                                   </div>
                                                   <div
                                                     className="image-container"
@@ -738,57 +736,55 @@ export const Console = () => {
                                                       src="https://assets.asana.biz/transform/d2ffb5c8-a7c2-4e39-8447-f8e2501c5bdc/article-project-planning-project-design-2x"
                                                       alt="project"
                                                     />
-                                                    <p>
-                                                      Proyecto 14
-                                                    </p>
+                                                    <p>Proyecto 14</p>
                                                   </div>
                                                 </Row>
                                               </Col>
                                             </Row>
                                           ) : index === 2 ? (
-                                            <Row>
+                                            <Row key={index}>
                                               <Col>
                                                 <p>3</p>
                                               </Col>
                                             </Row>
                                           ) : index === 3 ? (
-                                            <Row>
+                                            <Row key={index}>
                                               <Col>
                                                 <p>4</p>
                                               </Col>
                                             </Row>
                                           ) : index === 4 ? (
-                                            <Row>
+                                            <Row key={index}>
                                               <Col>
                                                 <p>5</p>
                                               </Col>
                                             </Row>
                                           ) : index === 5 ? (
-                                            <Row>
+                                            <Row key={index}>
                                               <Col>
                                                 <p>6</p>
                                               </Col>
                                             </Row>
                                           ) : index === 6 ? (
-                                            <Row>
+                                            <Row key={index}>
                                               <Col>
                                                 <p>7</p>
                                               </Col>
                                             </Row>
                                           ) : index === 7 ? (
-                                            <Row>
+                                            <Row key={index}>
                                               <Col>
                                                 <p>8</p>
                                               </Col>
                                             </Row>
                                           ) : index === 8 ? (
-                                            <Row>
+                                            <Row key={index}>
                                               <Col>
                                                 <p>9</p>
                                               </Col>
                                             </Row>
                                           ) : (
-                                            <Row>
+                                            <Row key={index}>
                                               <Col>
                                                 <p>10</p>
                                               </Col>
