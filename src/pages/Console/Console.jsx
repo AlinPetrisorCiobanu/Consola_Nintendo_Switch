@@ -176,6 +176,8 @@ export const Console = () => {
     setDateCaracters({});
   };
 
+  // RICK AND MORTY
+
   const dateBBD = (page) => {
     getBaseDatos(page)
       .then((res) => {
@@ -193,6 +195,10 @@ export const Console = () => {
   const transmitir = (ind) => {
     const caracter = caracteres.find((e) => e.id === ind);
     setDateCaracters(caracter);
+  };
+
+  const back_rick_and_morty = () => {
+    setDateCaracters({});
   };
 
   return (
@@ -461,11 +467,25 @@ export const Console = () => {
                                                 {Object.keys(dateCaracters)
                                                   .length > 0 ? (
                                                   <>
-                                                    <h6>name : {dateCaracters.name}</h6>
-                                                    <p>id : {dateCaracters.id}</p>
-                                                    <p>status : {dateCaracters.status}</p>
-                                                    <p>species : {dateCaracters.species}</p>
-                                                    <p>type : {dateCaracters.type}</p>
+                                                    <h6>
+                                                      name :{" "}
+                                                      {dateCaracters.name}
+                                                    </h6>
+                                                    <p>
+                                                      id : {dateCaracters.id}
+                                                    </p>
+                                                    <p>
+                                                      status :{" "}
+                                                      {dateCaracters.status}
+                                                    </p>
+                                                    <p>
+                                                      species :{" "}
+                                                      {dateCaracters.species}
+                                                    </p>
+                                                    <p>
+                                                      type :{" "}
+                                                      {dateCaracters.type}
+                                                    </p>
                                                     <h6>{dateCaracters.url}</h6>
                                                     <img
                                                       src={dateCaracters.image}
@@ -839,7 +859,14 @@ export const Console = () => {
                           md={12}
                           className="d-flex justify-content-center"
                         >
-                          <div className="abxy button-b">
+                          <div
+                            onClick={() =>
+                              Object.keys(dateCaracters).length > 0
+                                ? back_rick_and_morty()
+                                : home()
+                            }
+                            className="abxy button-b"
+                          >
                             <p className="power-on">B</p>
                           </div>
                         </Col>
