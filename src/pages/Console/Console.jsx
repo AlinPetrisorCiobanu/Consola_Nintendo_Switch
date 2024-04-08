@@ -1,4 +1,3 @@
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useEffect, useState } from "react";
@@ -11,8 +10,11 @@ import {
   faCaretRight,
   faHouse,
 } from "@fortawesome/free-solid-svg-icons";
-import "./Console.scss";
 import { getBaseDatos } from "../../services/apiCalls";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import "./Console.scss";
+import { MyVerticallyCenteredModal } from "../../common/Modal/Modal";
 
 class CounterSelectMain {
   valor = 1;
@@ -36,6 +38,7 @@ export const Console = () => {
   const [switchedOn, setSwitchedOn] = useState(false);
   const [menu, setMenu] = useState(false);
   const [subMenus, setSubMenus] = useState(Array(10).fill(false));
+  const [modalShow, setModalShow] = useState(false);
   const [counterSelection] = useState(new CounterSelectMain());
 
   const [caracteres, setCaracteres] = useState([]);
@@ -203,6 +206,10 @@ export const Console = () => {
 
   return (
     <div className="console-main-design">
+      <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
       {mobile ? (
         <>
           <div className="rotate-message">
@@ -215,6 +222,9 @@ export const Console = () => {
           <Row>
             <Col className="d-flex justify-content-center" xs={12} md={12}>
               <Row className=" console-design">
+            <Col xs={12} md={12} className="text-center mb-5 about-console">
+              <p onClick={() => setModalShow(true)}>about</p>
+            </Col>
                 <Col xs={12} md={12} className="top-bar">
                   <Row>
                     <Col xs={3} md={3}></Col>

@@ -6,6 +6,21 @@
   overflow-x: hidden;
   overflow-y: scroll;
 
+  .about-console{
+    p{
+      color: #004ce3;
+      font-size: 1.4rem;
+      text-decoration: underline;
+      margin-bottom: -200px;
+    }
+    @media (max-width: 800px) {
+    p{
+      position: relative;
+      top: 40px;
+    }
+    }
+  }
+
   /* ---- DISEÑO DE LA CONSOLA  -----*/
   .top-bar {
     .button-start {
